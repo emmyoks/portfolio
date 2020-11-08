@@ -10,12 +10,6 @@ const navVm = new Vue({
             "#my-skills":"My Skills",
             "#projects":"Projects",
             "#contact":"Contact Me"
-        },
-        projects: {
-            "project":"project",
-            "project":"project",
-            "project":"project",
-            "project":"project"
         }
     },
     methods:{
