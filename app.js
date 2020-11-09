@@ -24,7 +24,7 @@ const projectVm = new Vue({
     data:{
         
         projects: {
-            "budget app":"https://github.com/emmyoks/mebudget",
+            "budget app":"https://mebudget.netlify.app/",
             "todo app":"https://todoapp-withvuejs.netlify.app/",
             "randomising app":"https://randup.netlify.app/",
             "weather app":"https://weatherw.netlify.app/"
