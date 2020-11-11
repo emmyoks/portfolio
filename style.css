@@ -229,7 +229,7 @@ button, button:focus{
 }
 .leave-a-message textarea{
     resize: none;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;git 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .leave-a-message form button{
     margin-top: 5px;
