@@ -47,11 +47,44 @@ const contactvm = new Vue({
     el: '#contact',
     data:{
         
+        form: {
+            'name':'',
+            'email':'',
+            'message':''
+        },
         socials: {
             'github':'https://github.com/emmyoks',
             'twitter':'https://twitter.com/Meetemmyoks',
             'linkedin':'https://www.linkedin.com/in/emmanuel-obasanmi-6a14351b1'
 
+        }
+    },
+    methods:{
+        sendForm:function(){
+            console.log("on it right now")
+            const FD = new FormData();
+            Object.entries(this.form).forEach(([key,value])=> {
+                FD.append(key, value)
+            })
+
+            console.log(this.form.name)
+            const link = "https://script.google.com/macros/s/AKfycbxL18Dhnr48O7Wpxp-C3NZwgdECsk-VgEwQGwCt/exec";
+        
+            axios.post(link,FD)
+            .then(res=>{
+                swal({
+                    title: "",
+                    text: "Hey"+this.form.name+"Thanks for reaching out, I'll get back to you as soon as possible.",
+                    icon: "success",
+                    });
+            })
+            .catch(err=>{
+                swal({
+                    title: "",
+                    text: err+", you can reach us through Gmail, Github, Twitter and Linkedin.",
+                    icon: "error",
+                  });
+            })
         }
     }
 })

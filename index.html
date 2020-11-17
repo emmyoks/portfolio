@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <link rel="shortcut icon" href="favicon.png">
     
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://kit.fontawesome.com/e06ce451e3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <title> Emmanuel Obasanmi </title>
 </head>
@@ -69,12 +71,12 @@
                 </div>
 
                 <p>
-                    <b data-aos="fade-up" data-aos-delay="1000">I'm a Web Designer and Developer,</b>
+                    <b data-aos="fade-up" data-aos-delay="1000">I am a Web Designer and Developer,</b>
                    <span data-aos="fade-up" data-aos-duration="1000">
                     as mentioned above. I build Responsive, User interactive, purpose Oriented and mindblowing websites with the use of
                     JAVASCRIPT, HTML, CSS and plethora of Frameworks and libries which includes:</span>
                     <span data-aos="fade-up" data-aos-duration="1000">Vuejs, Jquery, Bootstrap, Materialize E.T.C <br>
-                    I've always been enthusiastic and inquisitive about tech and computers generally, I'm a big fan of 
+                    I have always been enthusiastic and inquisitive about tech and computers generally, I'm a big fan of 
                     building and creating things, putting ideas and imaginations into reality.</span>
                     <br><span data-aos="fade-up" data-aos-duration="1000">
                         I currently work remotely and opened for new opportunities,I'm also opened for collaborations with other developers.
@@ -191,27 +193,34 @@
             </div>
 
             <div id="contact">
+                <!-- <div class="sent-msg">
+                    *Message sent, I'll get back to you as soon as possible.
+                    <div type="button" class="msg-sent-ok">Ok</div>
+                </div> -->
                 <div class="leave-a-message">
                     <h1 data-aos="fade-right">Leave A Message -</h1>
                     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-                    <form action="https://script.google.com/macros/s/AKfycbxL18Dhnr48O7Wpxp-C3NZwgdECsk-VgEwQGwCt/exec"
-                    target="dummyframe" method="post">
+                    <form action="" @submit.prevent="sendForm"
+                    id="vis-form" target="dummyframe" method="post">
     
                         <div class="name">
                             <label data-aos="fade-down" data-aos-delay="300" for="name">Name *</label>
-                            <input data-aos="zoom-in" data-aos-delay="500" type="text" name="name" placeholder="Enter Your Name"/>
+                            <input data-aos="zoom-in" data-aos-delay="500" type="text" name="name" 
+                            placeholder="Enter Your Name" v-model="form.name" required />
                         </div>
     
                         <div class="email">
                             <label data-aos="fade-down" data-aos-delay="700" for="Email">Email *</label>
-                            <input data-aos="zoom-in" data-aos-delay="1000" type="email" name="email" placeholder="Enter Your Email ID."/>
+                            <input data-aos="zoom-in" data-aos-delay="1000" type="email" name="email"
+                             placeholder="Enter Your Email ID." v-model="form.email" required />
                         </div>
                         <div class="msg">
                             <label data-aos="fade-down" data-aos-delay="1200" for="msg">How can i help you? *</label>
-                            <textarea data-aos="zoom-in" data-aos-delay="1500" name="message" id="msg" cols="30" rows="10" placeholder="Enter Your Message"></textarea>
+                            <textarea data-aos="zoom-in" data-aos-delay="1500" name="message" id="msg" cols="30" rows="10"
+                             placeholder="Enter Your Message" v-model="form.message" required ></textarea>
                         </div>
                         <div class="btn">
-                            <button data-aos="flip-right" data-aos-delay="1000" type="submit">Send <i class="fas fa-paper-plane"></i> </button>
+                            <button data-aos="flip-right" @submit.prevent="sendForm" type="submit">Send <i class="fas fa-paper-plane"></i> </button>
                         </div>
                     </form>
                     <div class="social">
