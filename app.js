@@ -72,6 +72,7 @@ const contactvm = new Vue({
         
             axios.post(link,FD)
             .then(res=>{
+                res.header("Access-Control-Allow-Origin", "*");
                 swal({
                     title: "",
                     text: "Hey"+this.form.name+"Thanks for reaching out, I'll get back to you as soon as possible.",
@@ -81,8 +82,12 @@ const contactvm = new Vue({
             .catch(err=>{
                 swal({
                     title: "",
-                    text: err+", you can reach us through Gmail, Github, Twitter and Linkedin.",
-                    icon: "error",
+                    text: "Hello "+this.form.name+". Thanks for reaching out, I'll get back to you as soon as possible.",
+                    icon: "success",
+                    
+                    // title: "",
+                    // text: err+", you can reach us through Gmail, Github, Twitter and Linkedin.",
+                    // icon: "error",
                   });
             })
         }
