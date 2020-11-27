@@ -57,39 +57,54 @@ const contactvm = new Vue({
             'twitter':'https://twitter.com/Meetemmyoks',
             'linkedin':'https://www.linkedin.com/in/emmanuel-obasanmi-6a14351b1'
 
-        }
+        },
+        submit: true,
+        flyPlane:'',
+        visName:''
     },
     methods:{
         sendForm:function(){
-            console.log("on it right now")
-            const FD = new FormData();
-            Object.entries(this.form).forEach(([key,value])=> {
-                FD.append(key, value)
-            })
-
-            console.log(this.form.name)
-            const link = "https://script.google.com/macros/s/AKfycbxL18Dhnr48O7Wpxp-C3NZwgdECsk-VgEwQGwCt/exec";
-        
-            axios.post(link,FD)
-            .then(res=>{
-                res.header("Access-Control-Allow-Origin", "*");
-                swal({
-                    title: "",
-                    text: "Hey"+this.form.name+"Thanks for reaching out, I'll get back to you as soon as possible.",
-                    icon: "success",
-                    });
-            })
-            .catch(err=>{
-                swal({
-                    title: "",
-                    text: "Hello "+this.form.name+". Thanks for reaching out, I'll get back to you as soon as possible.",
-                    icon: "success",
+            console.log(this.submit)
+            if(this.submit){
+                this.visName = this.form.name;
+                this.flyPlane='fly';
+                this.submit = false;
+                const el = document.createElement('div')
+                el.innerHTML = "An error occured, you can reach us through <a href='mailto:emmanuelObasanmi@gmail.com?'>Gmail</a>, <a href='https://github.com/emmyoks'>GitHub</a>, <a href='https://twitter.com/Meetemmyoks'>Twitter</a> and <a href='https://www.linkedin.com/in/emmanuel-obasanmi-6a14351b1'>Linkedin</a>."
+            
+                emailjs.sendForm('service_a8es2ij', 'Port_web1', '#vis-form')
+                .then((response) => {
                     
-                    // title: "",
-                    // text: err+", you can reach us through Gmail, Github, Twitter and Linkedin.",
-                    // icon: "error",
-                  });
-            })
+                    swal({
+                        title: "",
+                        text: "Hello "+this.form.name+". Thanks for reaching out, I'll get back to you as soon as possible.",
+                        icon: "success",
+                        });
+
+                    this.form.name = '';
+                    this.form.email = '';
+                    this.form.message = '';
+                    this.flyPlane='';
+                },
+                (error) => {
+                    console.log(error)
+                    swal({             
+                        title: "",
+                        content: el,
+                        icon: "error",
+                        html: true
+                    });
+                    this.submit = true;
+                    this.flyPlane='';
+                })
+            }else{
+                swal({             
+                    title: "",
+                    text: "Hello again "+this.visName+", the message you sent earlier has been delivered, Kindly wait for a reply from me or refresh page to try again if important.",
+                    icon: "error"
+                });
+                
+            }
         }
     }
 })

@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/e06ce451e3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
     <title> Emmanuel Obasanmi </title>
 </head>
@@ -131,17 +132,17 @@
                 <h1 data-aos="fade-right">My Skills -</h1>
 
                 <div class="item">
-                    <b data-aos="fade-right" data-aos-delay="200">Responsive Design - 90%</b>
+                    <b data-aos="fade-right" data-aos-delay="200">Responsive Design </b>
                     <div data-aos="flip-right" data-aos-delay="300" data-aos-duration="500" class="meter-responsive"></div>
                 </div>
 
                 <div class="item">
-                    <b data-aos="fade-right" data-aos-delay="400">Web Designing - 80%</b>
+                    <b data-aos="fade-right" data-aos-delay="400">Web Designing </b>
                     <div data-aos="flip-right" data-aos-delay="500" data-aos-duration="500" class="meter-web-design"></div>
                 </div>
 
                 <div class="item">
-                    <b data-aos="fade-right" data-aos-delay="600">Back-End and Data Management - 50%</b>
+                    <b data-aos="fade-right" data-aos-delay="600">Back-End and Data Management </b>
                     <div data-aos="flip-right" data-aos-delay="700" data-aos-duration="500" class="meter-backend"></div>
                 </div>
 
@@ -219,7 +220,7 @@
                              placeholder="Enter Your Message" v-model="form.message" required ></textarea>
                         </div>
                         <div class="btn">
-                            <button data-aos="flip-right" @submit.prevent="sendForm" type="submit">Send <i class="fas fa-paper-plane"></i> </button>
+                            <button data-aos="flip-right" @submit.prevent="sendForm" type="submit">Send <i :class="flyPlane" class="fas fa-paper-plane"></i> </button>
                         </div>
                     </form>
                     <div class="social">
@@ -247,6 +248,11 @@
         </a>
     </footer>
 
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_nmWuFOA31mAJzjdEj9MJG");
+        })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="app.js"></script>
 
