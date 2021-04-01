@@ -24,7 +24,7 @@ const projectVm = new Vue({
     data:{
         
         projects: {
-            "budget app":"https://mebudget.netlify.app/",
+            "budget app":"http://mebudget.herokuapp.com/",
             "todo app":"https://todoapp-withvuejs.netlify.app/",
             "randomising app":"https://randup.netlify.app/",
             "weather app":"https://weatherw.netlify.app/"
@@ -64,7 +64,6 @@ const contactvm = new Vue({
     },
     methods:{
         sendForm:function(){
-            console.log(this.submit)
             if(this.submit){
                 this.visName = this.form.name;
                 this.flyPlane='fly';
